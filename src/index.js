@@ -3,15 +3,31 @@ import 'react-app-polyfill/stable';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './styles/index.scss';
+import { Provider } from 'react-redux';
+import {
+    BrowserRouter as Router, Route, Switch,
+} from 'react-router-dom';
 import App from './App';
+import Post from './components/Post';
+import PostForm from './components/PostForm';
 import * as serviceWorker from './serviceWorker';
+import store from './store';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
+    <Provider store={store}>
+        <Router>
+            <React.StrictMode>
+                <Switch>
+                    <Route exact path="/" component={App}/>
+                    <Route path="/post" component={Post}/>
+                    <Route path="/post-form" component={PostForm}/>
+                </Switch>
+            </React.StrictMode>
+        </Router>
+    </Provider>,
+    document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
