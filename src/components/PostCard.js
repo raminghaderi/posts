@@ -7,7 +7,7 @@ import '../styles/components/PostCard.scss';
 
 export default function PostCard({posts}) {
     return (
-        posts && posts.map(post => (
+        posts.map(post => (
             <Card key={post.id} variant={'outlined'}>
                 <CardContent >
                     <Typography color="textSecondary">

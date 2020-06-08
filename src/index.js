@@ -15,6 +15,7 @@ import PostForm from './components/PostForm';
 import * as serviceWorker from './serviceWorker';
 import store from './store';
 
+// TODO Ask Kevin about how I specified the Provider and Routes and if this is the right way or not?
 ReactDOM.render(
     <Provider store={store}>
         <Router>

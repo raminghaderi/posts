@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
@@ -10,28 +10,19 @@ import { loadPosts } from '../actions/loadPosts';
 import { postsMock } from '../__mocks__/data/postsMock';
 import PostCard from './PostCard';
 import '../styles/components/Posts.scss';
+import mapPosts from '../mappers/mapPosts';
 
 function Posts() {
-    // TODO Ask Kevin why the following is not working?
-    // const [posts, setPosts] = useState([]);
     const dispatch = useDispatch();
-    const [isLoaded, setIsLoaded] = useState(false);
+    const posts = useSelector(mapPosts, shallowEqual);
 
     useEffect(() => {
-        if (!isLoaded) {
-            dispatch(loadPosts(postsMock));
-            setIsLoaded(!isLoaded);
-        }
+        dispatch(loadPosts(postsMock));
     }, [dispatch]);
-
-    // TODO Ask Kevin how to use mapper here?
-    // setPosts(useSelector(state => state.posts, shallowEqual));
-
-    const posts = useSelector(state => state.posts, shallowEqual);
 
     return (
         <Container maxWidth="md">
-            {posts && <PostCard posts = {posts}/>}
+            <PostCard posts={posts}/>
             <Grid container
                   direction="row"
                   justify="center"
