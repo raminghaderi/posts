@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 
 import '../styles/components/PostCard.scss';
 
-export default function PostCard({posts}) {
+export default function PostCard({ posts }) {
     return (
         posts.map(post => (
             <Card key={post.id} variant={'outlined'}>
@@ -14,7 +14,7 @@ export default function PostCard({posts}) {
                         {post.title}
                     </Typography>
                 </CardContent>
-        </Card>
+            </Card>
         ))
     );
 }
