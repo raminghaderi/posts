@@ -9,7 +9,7 @@ export default function PostCard({posts}) {
     return (
         posts.map(post => (
             <Card key={post.id} variant={'outlined'}>
-                <CardContent >
+                <CardContent>
                     <Typography color="textSecondary">
                         {post.title}
                     </Typography>

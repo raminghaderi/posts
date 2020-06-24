@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { loadPosts } from '../actions/loadPosts';
-import { postsMock } from '../__mocks__/data/postsMock';
+
 import PostCard from './PostCard';
+
+import { loadPosts } from '../actions/loadPosts';
 import '../styles/components/Posts.scss';
 import mapPosts from '../mappers/mapPosts';
 
@@ -17,7 +16,7 @@ function Posts() {
     const posts = useSelector(mapPosts, shallowEqual);
 
     useEffect(() => {
-        dispatch(loadPosts(postsMock));
+        dispatch(loadPosts());
     }, [dispatch]);
 
     return (
