@@ -4,17 +4,16 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 import PostCard from './PostCard';
+import Paginations from './Pagination';
 
 import { loadPosts } from '../actions/loadPosts';
 import '../styles/components/Posts.scss';
 import mapPosts from '../mappers/mapPosts';
-import Paginations from './Pagination';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 
 function Posts() {
     const dispatch = useDispatch();
@@ -29,8 +28,10 @@ function Posts() {
     const limitedPosts = posts.slice(startIndex, lastIndex);
 
     useEffect(() => {
-        dispatch(loadPosts());
-    }, [dispatch]);
+        if (posts.length === 0) {
+            dispatch(loadPosts());
+        }
+    }, [dispatch, posts.length]);
 
     const currentPageNumber = (currentPageNumber) => {
         setCurrentPage(currentPageNumber);
@@ -55,16 +56,9 @@ function Posts() {
                   spacing={1}
             >
                 <Grid container item sm={4} justify="center">
-                    <Link to='/post'>
-                        <Button variant="contained" color="primary">
-                            Post
-                        </Button>
-                    </Link>
-                </Grid>
-                <Grid item sm={4}>
                     <Link to='/post-form'>
                         <Button variant="contained" color="primary">
-                            Post Form
+                            Add Post
                         </Button>
                     </Link>
                 </Grid>

@@ -3,17 +3,18 @@ import 'react-app-polyfill/stable';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import './styles/index.scss';
 import { Provider } from 'react-redux';
 import {
     BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
+
 import App from './App';
 import Post from './components/Post';
 import PostForm from './components/PostForm';
 import * as serviceWorker from './serviceWorker';
 import store from './store';
+
+import './styles/index.scss';
 
 // TODO Ask Kevin about how I specified the Provider and Routes and if this is the right way or not?
 ReactDOM.render(
@@ -22,7 +23,7 @@ ReactDOM.render(
             <React.StrictMode>
                 <Switch>
                     <Route exact path="/" component={App}/>
-                    <Route path="/post" component={Post}/>
+                    <Route path="/post/:id" component={Post}/>
                     <Route path="/post-form" component={PostForm}/>
                 </Switch>
             </React.StrictMode>

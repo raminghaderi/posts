@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
-import rootReducer from '../reducers/posts';
+import rootReducer from '../reducers/index';
 
 // TODO Ask Kevin about how I created the store and why rootReducer has yellow underline?
 const store = createStore(rootReducer, applyMiddleware(thunk));
